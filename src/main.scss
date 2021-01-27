@@ -1,0 +1,70 @@
+//scss文件引入scss库
+@import '@/qunar/reset.scss';
+
+html, body, #app {
+  @include rect(100%, 100%);
+  font-family: Helvetica Neue;
+}
+// iconfont使用
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  font-size: .35rem;
+}
+
+#app {
+  @include flexbox();//
+  @include flex-direction(column);
+
+  .container {
+    @include flex();//flex: 1
+    @include rect(100%, auto);//width:100%,height:auto
+    @include flexbox();
+    @include flex-direction(column);
+    padding: 0;
+
+    .header {
+      @include rect(100%, auto);
+      background-color: rgba(238,238,238,.6);
+    }
+
+    .content {
+      @include flex();
+      @include rect(100%, auto);
+      @include overflow();
+    }
+  }
+
+  .footer {
+    @include rect(100%, 0.6rem);
+    //@include background-color(#eee);
+    box-sizing: border-box;
+    padding: .1rem 0;
+    ul {
+      @include rect(100%, 100%);
+      @include flexbox();
+      li{
+        @include flex();
+        @include rect(auto, 100%);
+        //实现的是元素的内部水平垂直居中
+        @include flexbox();
+        @include flex-direction(column);
+        @include justify-content(space-around);
+        @include align-items();
+        @include color(#ccc);
+
+        &.router-link-active{
+          @include color(#000);
+        }
+
+        p{
+          margin-top: .03rem;
+          font-size: 0.14rem;
+        }
+      }
+    }
+  }
+}
